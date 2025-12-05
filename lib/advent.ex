@@ -20,6 +20,10 @@ defmodule Advent do
     |> String.split("\n")
   end
 
+  def fetch_input!(day, module) when is_atom(module) do
+    day |> fetch_input!(:binary) |> module.parse!()
+  end
+
   def fetch_input!(day, {:tensor, opts}) do
     type = Keyword.get(opts, :type, :u8)
     mapping = Keyword.get(opts, :mapping, nil)
