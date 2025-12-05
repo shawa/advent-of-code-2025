@@ -1,33 +1,33 @@
 defmodule Advent2025.Day04 do
-  use Advent, day: 4, input: {:tensor, mapping: %{?@ => 1, ?. => 0}}
-  import Nx.Defn
+  use Advent, day: 4, input: {Nx.Tensor, remap: %{?@ => 1, ?. => 0}}
 
   import Nx
+  import Nx.Defn
 
   def part_1, do: input() |> accessible() |> sum() |> to_number()
 
   def part_2 do
     grid = input()
-    final = y(grid, &step/1)
+    final = y(grid, &remove_accessible/1)
     subtract(grid, final) |> sum() |> to_number()
   end
 
-  defn step(grid) do
-    subtract(grid, accessible(grid))
+  defn remove_accessible(grid) do
+    grid - accessible(grid)
   end
 
   defn accessible(grid) do
-    count_neighbors(grid) |> less(4) |> logical_and(grid)
+    neighbours(grid) < 4 and grid
   end
 
-  @neighbor_kernel [
+  @kernel [
     [1, 1, 1],
     [1, 0, 1],
     [1, 1, 1]
   ]
-  defn count_neighbors(grid) do
+  defn neighbours(grid) do
     {h, w} = shape(grid)
-    kernel = tensor(@neighbor_kernel) |> reshape({1, 1, 3, 3})
+    kernel = tensor(@kernel) |> reshape({1, 1, 3, 3})
     grid |> reshape({1, 1, h, w}) |> conv(kernel, padding: :same) |> squeeze()
   end
 

@@ -51,7 +51,7 @@ defmodule Advent2025.Day05 do
   end
 end
 
-# pulling the parser out into the module quietens the brain
+# pulling the parser out into its own module quietens the brain
 defmodule Advent2025.Day05.Input do
   def parse!(input) do
     [ranges_part, numbers_part] =

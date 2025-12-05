@@ -1,3 +1,7 @@
+<p align="left">
+  <img width="100" height="100" alt="erlang" src="https://github.com/user-attachments/assets/47346552-61dc-483e-bf31-eabdfe826a75" />
+</p>
+
 # Advent 2025
 
 ```sh
@@ -17,3 +21,8 @@ $ mix advent.run
 
 - <https://www.youtube.com/watch?v=lKXe3HUG2l4>
 - <https://www.youtube.com/watch?v=xrIjfIjssLE>
+
+<p align="right">
+<img width="300" alt="Screenshot 2025-12-05 at 09 41 12" src="https://github.com/user-attachments/assets/58ed051b-eb2d-4543-a5bc-2df436e5d65b" />
+
+</p>
